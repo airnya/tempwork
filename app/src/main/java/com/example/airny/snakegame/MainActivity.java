@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         snakeView.resume();
     }
-    // возвращает приложение 
+    // возвращает приложение
     // показывает игроку
     @Override
     protected void onPause() {

@@ -46,4 +46,67 @@ class SnakeView extends SurfaceView implements Runnable {
 
     public enum Direction {UP, DOWN, LEFT, RIGHT}
     //для отслеживания движения
+    private Direction m_Direction = Direction.RIGHT;
+    //старт при косании вправо
+
+    private int m_ScreenWidght;
+    private int m_ScreenHeight;
+    //данные разрешения экрана
+
+    private long m_NextFrameTime;
+    //Контроль паузы между обновлениями
+    private final long FPS = 10;
+    //10 кадров в сек
+    private final long MILLIS_IN_A_SECOND = 1000;
+    // надо потестить с фпс
+
+    private int m_Score;
+    //текущие очки
+
+    private int[] m_SnakeXs;
+    private int[] m_SnakeYs;
+    //отслеживаем сегменты
+
+    private int m_SnakeLength;
+    //размер змейки на данный момент
+
+    private int m_MouseX;
+    private int m_MouseY;
+    //отслеживание мышки
+
+    private int m_BlockSize;
+    //размер пикселей сегмента змеи
+
+    private final int NUM_BLOCKS_WIDE = 40;
+    //размер экрана игры
+    private int m_NumBlocksHigh;
+    //размер определяется динамически
+}
+
+public SnakeView(Context context, Point size) {
+    super(context);
+
+    m_context = context;
+
+    m_ScreenWidght = size.x;
+    m_ScreenHeight = size.y;
+
+    m_BlockSize = m_ScreenWidght / NUM_BLOCKS_WIDE;
+    // определить размер каждого блока на игровом экране
+    m_NumBlocksHigh = m_ScreenHeight / m_BlockSize;
+    // Сколько блоков одинакого размера будет вписываться в высоту
+
+    loadSound();
+    //Загрузка звука сделаю потом
+
+    m_Holder = getHolder();
+    m_Paint = new Paint();
+    //объекты рисования
+
+    m_SnakeXs = new int[200];
+    m_SnakeYs = new int[200];
+    //При 200 очках игра скрашится
+
+    startGame();
+    //Запуск игры сделаю потом
 }
