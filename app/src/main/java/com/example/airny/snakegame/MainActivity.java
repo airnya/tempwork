@@ -7,7 +7,7 @@ import android.view.Display;
 
 
 public class MainActivity extends AppCompatActivity {
-    SnakeView snakeView
+    SnakeView snakeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
